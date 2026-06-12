@@ -64,6 +64,9 @@ education, and experience. Empty fields are simply skipped. Add any standing
 answers to `answer_bank` as `"question": "answer"` pairs — they fill exactly
 on matching forms and teach the AI your preferences everywhere else.
 
+**→ See [`PROFILE_GUIDE.md`](./PROFILE_GUIDE.md) for a field-by-field guide**,
+including how answer-bank matching works and how to update your data later.
+
 ### 3. Add your documents
 
 ```
