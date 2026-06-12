@@ -24,14 +24,18 @@
   "work_eligibility": {
     "authorized_to_work_us": "",
     "require_sponsorship_now_or_future": "",
+    "sponsorship_details": "",
     "visa_status": "",
     "citizenship": "",
+    "us_citizen": "",
     "security_clearance": ""
   },
   "logistics": {
     "years_experience": "",
     "open_to_relocation": "",
     "remote_preference": "",
+    "willing_to_work_onsite": "",
+    "current_location": "",
     "earliest_start_date": "",
     "notice_period": "",
     "salary_expectation": "",

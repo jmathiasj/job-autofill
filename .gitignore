@@ -11,3 +11,6 @@ profile.json
 
 # Personal documents
 docs/*.pdf
+
+# Local secrets
+secrets.js

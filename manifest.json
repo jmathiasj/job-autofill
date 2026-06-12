@@ -2,14 +2,20 @@
   "manifest_version": 3,
   "name": "AutoApply",
   "version": "0.1.0",
-  "description": "Autofill job applications from your profile and resume, and draft answers with AI. Works on Greenhouse, Lever, Ashby, and Workday.",
+  "description": "Autofill job applications from your profile and resume, and draft answers with AI. Works on Greenhouse, Lever, Ashby, Workday, iCIMS, SmartRecruiters, Workable, Jobvite, BambooHR, and Taleo.",
   "permissions": ["storage", "scripting", "activeTab"],
   "host_permissions": [
     "https://api.anthropic.com/*",
     "https://*.greenhouse.io/*",
     "https://*.lever.co/*",
-    "https://jobs.ashbyhq.com/*",
-    "https://*.myworkdayjobs.com/*"
+    "https://*.ashbyhq.com/*",
+    "https://*.myworkdayjobs.com/*",
+    "https://*.icims.com/*",
+    "https://*.smartrecruiters.com/*",
+    "https://*.workable.com/*",
+    "https://*.jobvite.com/*",
+    "https://*.bamboohr.com/*",
+    "https://*.taleo.net/*"
   ],
   "background": { "service_worker": "background.js", "type": "module" },
   "action": { "default_popup": "popup.html", "default_title": "AutoApply" },
@@ -18,8 +24,14 @@
       "matches": [
         "https://*.greenhouse.io/*",
         "https://*.lever.co/*",
-        "https://jobs.ashbyhq.com/*",
-        "https://*.myworkdayjobs.com/*"
+        "https://*.ashbyhq.com/*",
+        "https://*.myworkdayjobs.com/*",
+        "https://*.icims.com/*",
+        "https://*.smartrecruiters.com/*",
+        "https://*.workable.com/*",
+        "https://*.jobvite.com/*",
+        "https://*.bamboohr.com/*",
+        "https://*.taleo.net/*"
       ],
       "js": ["content.js"],
       "run_at": "document_idle",
