@@ -1,0 +1,13 @@
+# Personal data — do NOT commit
+profile.json
+
+# OS / editor
+.DS_Store
+*.log
+
+# Secrets
+.env
+*.key
+
+# Personal documents
+docs/*.pdf

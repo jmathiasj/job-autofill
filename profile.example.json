@@ -1,0 +1,243 @@
+{
+  "identity": {
+    "first_name": "",
+    "last_name": "",
+    "full_name": "",
+    "email": "",
+    "phone": "",
+    "location_city": "",
+    "location_state": "",
+    "zip_code": "",
+    "country": "",
+    "pronouns": ""
+  },
+  "links": {
+    "linkedin": "",
+    "github": "",
+    "portfolio": "",
+    "website": ""
+  },
+  "documents": {
+    "resume": "",
+    "cover_letter": ""
+  },
+  "work_eligibility": {
+    "authorized_to_work_us": "",
+    "require_sponsorship_now_or_future": "",
+    "visa_status": "",
+    "citizenship": "",
+    "security_clearance": ""
+  },
+  "logistics": {
+    "years_experience": "",
+    "open_to_relocation": "",
+    "remote_preference": "",
+    "earliest_start_date": "",
+    "notice_period": "",
+    "salary_expectation": "",
+    "willing_to_travel": ""
+  },
+  "eeo_voluntary": {
+    "gender": "",
+    "race_ethnicity": "",
+    "veteran_status": "",
+    "disability_status": ""
+  },
+  "education": [
+    {
+      "school": "",
+      "degree": "",
+      "field": "",
+      "gpa": "",
+      "start": "",
+      "end": "",
+      "location": "",
+      "coursework": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "school": "",
+      "degree": "",
+      "field": "",
+      "gpa": "",
+      "start": "",
+      "end": "",
+      "location": "",
+      "coursework": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "",
+      "title": "",
+      "location": "",
+      "current": true,
+      "start": "",
+      "end": "",
+      "highlights": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "company": "",
+      "title": "",
+      "location": "",
+      "current": false,
+      "start": "",
+      "end": "",
+      "highlights": [
+        "",
+        ""
+      ]
+    },
+    {
+      "company": "",
+      "title": "",
+      "location": "",
+      "current": false,
+      "start": "",
+      "end": "",
+      "highlights": [
+        ""
+      ]
+    },
+    {
+      "company": "",
+      "title": "",
+      "location": "",
+      "current": false,
+      "start": "",
+      "end": "",
+      "highlights": [
+        "",
+        "",
+        ""
+      ]
+    }
+  ],
+  "projects_publications": [
+    {
+      "name": "",
+      "dates": "",
+      "summary": ""
+    },
+    {
+      "name": "",
+      "dates": "",
+      "summary": "",
+      "publication": ""
+    }
+  ],
+  "skills": {
+    "languages": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "frontend": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "backend_apis": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "data": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "databases": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "cloud_devops": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "ml_ai": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "ai_assisted_dev": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "leadership": [
+    "",
+    "",
+    ""
+  ],
+  "narrative": {
+    "one_line_summary": "",
+    "intro": "",
+    "systems_strength": "",
+    "fintech_angle": "",
+    "ai_agentic_angle": "",
+    "ownership_value": "",
+    "why_company_template": ""
+  },
+  "answer_bank": {}
+}

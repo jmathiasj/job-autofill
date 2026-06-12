@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { font: 13px/1.45 -apple-system, system-ui, sans-serif; width: 340px; padding: 14px; color: #0f172a; }
+    h1 { font-size: 16px; margin: 0 0 4px; display: flex; align-items: center; gap: 7px; }
+    .muted { color: #64748b; font-size: 11.5px; }
+    label { display: block; font-weight: 650; margin: 13px 0 4px; }
+    input[type=password], input[type=text] { width: 100%; box-sizing: border-box; padding: 7px; border: 1px solid #e2e8f0; border-radius: 7px; }
+    textarea { width: 100%; box-sizing: border-box; height: 150px; padding: 8px; border: 1px solid #e2e8f0; border-radius: 7px; font: 11px/1.4 ui-monospace, Menlo, monospace; resize: vertical; }
+    .file { font-size: 12px; }
+    .ok { color: #16a34a; font-weight: 650; } .err { color: #dc2626; font-weight: 650; }
+    .row { display: flex; gap: 8px; }
+    .row button { flex: 1; }
+    button { margin-top: 6px; background: #16a34a; color: #fff; border: 0; border-radius: 8px; padding: 9px; font-weight: 650; cursor: pointer; }
+    button.ghost { background: #f1f5f9; color: #0f172a; }
+    .status { margin-top: 10px; font-size: 12px; min-height: 16px; }
+    details { margin-top: 12px; } summary { cursor: pointer; font-weight: 650; }
+  </style>
+</head>
+<body>
+  <h1>⚡ AutoApply</h1>
+  <div class="muted">Set up once, then click ⚡ Autofill on any Greenhouse / Lever / Ashby / Workday application.</div>
+
+  <label>Your profile (JSON) <span class="muted">name, contact, work-auth, experience…</span></label>
+  <textarea id="profile" spellcheck="false" placeholder="Paste your profile JSON, or click 'Load template' below"></textarea>
+  <div class="row">
+    <button id="loadTemplate" class="ghost" type="button">Load template</button>
+    <button id="format" class="ghost" type="button">Format / validate</button>
+  </div>
+
+  <label>Anthropic API key <span class="muted">(optional, for AI answers)</span></label>
+  <input id="key" type="password" placeholder="sk-ant-...">
+
+  <label>Resume <span id="resumeName" class="muted"></span></label>
+  <input id="resume" class="file" type="file" accept=".pdf,.doc,.docx">
+
+  <label>Cover letter <span id="coverName" class="muted"></span></label>
+  <input id="cover" class="file" type="file" accept=".pdf,.doc,.docx">
+
+  <button id="save">Save</button>
+  <div id="status" class="status"></div>
+
+  <details>
+    <summary class="muted">Tips</summary>
+    <div class="muted" style="margin-top:6px">
+      • Fill the profile fields that apply to you. Empty fields are simply skipped.<br>
+      • The API key only powers AI answers for custom questions; everything else works without it.<br>
+      • Your data stays in this browser (chrome.storage); nothing is uploaded except the AI calls you trigger.
+    </div>
+  </details>
+
+  <script src="popup.js"></script>
+</body>
+</html>
