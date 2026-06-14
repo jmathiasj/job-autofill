@@ -14,3 +14,7 @@ docs/*.pdf
 
 # Local secrets
 secrets.js
+
+# bridge runtime
+bridge/.bridge.pid
+bridge/bridge.log

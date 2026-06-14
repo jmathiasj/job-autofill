@@ -4,17 +4,35 @@ Routes the extension's AI calls through the **`claude` CLI** (`claude -p`) - you
 Claude Code subscription - instead of the metered Anthropic API. Use it if you'd
 rather spend subscription usage than pay per token.
 
-## Run it
+## Run it (persistent, like Wisdom)
+
+```bash
+./bridge.sh start      # nohup-detached - survives closing the terminal
+./bridge.sh status     # is it running?
+./bridge.sh logs       # tail the log
+./bridge.sh stop
+./bridge.sh restart
+```
+
+`start` detaches the server (reparented to launchd) so it keeps running after
+you close the terminal or Claude Code. Run `./bridge.sh start` again after a
+reboot. Then open the extension popup and tick **"Use local Claude"** - it shows
+a live "bridge running ✓" status.
+
+Or run it in the foreground if you prefer a visible window:
 
 ```bash
 python3 claude_bridge.py
 ```
 
-Keep that terminal open. Then open the extension popup and tick
-**"Use local Claude"**. The popup shows a live "bridge running ✓" status.
+No install, no dependencies (Python 3 stdlib only). Requires the `claude` CLI
+(Claude Code) on your PATH and signed in.
 
-That's it - no install, no dependencies (Python 3 stdlib only). Requires the
-`claude` CLI (Claude Code) on your PATH and signed in.
+### Auto-start on login (optional)
+
+To survive reboots without re-running `start`, add a LaunchAgent that runs
+`./bridge.sh start` at login - ask and one can be generated, or use macOS
+"Login Items".
 
 ## How it works
 
