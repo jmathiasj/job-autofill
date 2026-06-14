@@ -45,7 +45,13 @@
     <button id="format" class="ghost" type="button">Format / validate</button>
   </div>
 
-  <label>Anthropic API key <span class="muted">(powers the AI mapper)</span></label>
+  <label style="display:flex;align-items:center;gap:7px;cursor:pointer">
+    <input type="checkbox" id="local" style="width:auto;margin:0;accent-color:#4f46e5">
+    <span>Use local Claude <span class="muted" id="localStatus">(subscription, via bridge)</span></span>
+  </label>
+  <div class="muted" id="localHint" style="margin:2px 0 0;display:none">Run <code style="background:#f1f5f9;padding:1px 4px;border-radius:4px">python3 bridge/claude_bridge.py</code> and keep it open.</div>
+
+  <label>Anthropic API key <span class="muted">(powers the AI mapper; not needed in local mode)</span></label>
   <input id="key" type="password" placeholder="sk-ant-...">
 
   <label>Resume <span id="resumeName" class="muted"></span></label>

@@ -2,15 +2,40 @@ const $ = (id) => document.getElementById(id);
 
 $("dash").onclick = () => chrome.tabs.create({ url: chrome.runtime.getURL("dashboard.html") });
 
-// setup checklist: profile / resume / API key at a glance
+// "Use local Claude" toggle: route AI calls through the local bridge (subscription)
+const BRIDGE = "http://127.0.0.1:8765/";
+async function pingBridge() {
+  const s = $("localStatus");
+  try {
+    const r = await fetch(BRIDGE, { method: "GET" });
+    if (r.ok) { s.textContent = "(bridge running ✓)"; s.style.color = "#047857"; return; }
+  } catch (e) {}
+  s.textContent = $("local").checked ? "(bridge not reachable - start it)" : "(subscription, via bridge)";
+  s.style.color = $("local").checked ? "#b45309" : "";
+}
+chrome.storage.local.get("useLocalClaude", (v) => {
+  const on = !!(v && v.useLocalClaude);
+  $("local").checked = on;
+  $("localHint").style.display = on ? "block" : "none";
+  pingBridge();
+});
+$("local").onchange = () => {
+  const on = $("local").checked;
+  chrome.storage.local.set({ useLocalClaude: on });
+  $("localHint").style.display = on ? "block" : "none";
+  pingBridge();
+};
+
+// setup checklist: profile / resume / API key (or local bridge) at a glance
 chrome.runtime.sendMessage({ type: "health" }, (h) => {
   if (!h) return;
   const chip = (ok, label) =>
     `<span style="font-size:11px;font-weight:650;border-radius:6px;padding:3px 9px;border:1px solid ${ok ? "#d1fae5" : "#fde68a"};background:${ok ? "#ecfdf5" : "#fffbeb"};color:${ok ? "#047857" : "#b45309"}">${ok ? "✓" : "•"} ${label}</span>`;
+  const localOn = $("local").checked;
   $("check").innerHTML =
     chip(!!h.profileName, h.profileName ? "Profile: " + h.profileName.split(" ")[0] : "Profile missing") +
     chip(h.hasResume, h.hasResume ? "Resume ready" : "No resume") +
-    chip(h.hasKey, h.hasKey ? "AI key set" : "No API key");
+    chip(h.hasKey || localOn, localOn ? "Local Claude" : (h.hasKey ? "AI key set" : "No API key"));
 });
 
 function readAsDataURL(file) {

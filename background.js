@@ -40,9 +40,34 @@ function updateBadge(applications) {
 }
 chrome.storage.local.get("applications").then((v) => updateBadge(v.applications)).catch(() => {});
 
+// Local Claude bridge (claude -p via your subscription). Tried first when the
+// "Use local Claude" toggle is on; falls back to the API if it's unreachable.
+const BRIDGE_URL = "http://127.0.0.1:8765/v1/messages";
+async function tryBridge(body) {
+  try {
+    const res = await fetch(BRIDGE_URL, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    if (!res.ok) return { error: "bridge http " + res.status };
+    return await res.json();
+  } catch (e) {
+    return { error: "local bridge unreachable - is `python3 bridge/claude_bridge.py` running? (" + String(e).slice(0, 60) + ")" };
+  }
+}
+
 // Single entry point for Claude calls: retries 429/5xx/529 (and network drops)
 // with backoff so one transient error never kills an autofill run.
 async function callClaude(body, anthropicKey) {
+  const { useLocalClaude } = await chrome.storage.local.get("useLocalClaude");
+  if (useLocalClaude) {
+    const local = await tryBridge(body);
+    if (local && !local.error) return local;
+    if (!anthropicKey) return local || { error: "local bridge failed" }; // no API to fall back to
+    // otherwise fall through to the API path below
+  }
+  if (!anthropicKey) return { error: "no_key" };
   for (let attempt = 0; ; attempt++) {
     let res;
     try {
@@ -151,7 +176,7 @@ function resumeContext(p) {
 
 async function draftAnswer(question, jd, examples) {
   const anthropicKey = await getKey();
-  if (!anthropicKey) return { error: "no_key" };
+  if (!anthropicKey && !(await chrome.storage.local.get("useLocalClaude")).useLocalClaude) return { error: "no_key" };
   const p = await loadProfile();
   const context = resumeContext(p);
   const isLetter = /cover\s*letter/i.test(question || "");
@@ -210,7 +235,7 @@ async function draftAnswer(question, jd, examples) {
 // but can never introduce facts that aren't in the data.
 async function refineAnswer(question, current, instruction, jd) {
   const anthropicKey = await getKey();
-  if (!anthropicKey) return { error: "no_key" };
+  if (!anthropicKey && !(await chrome.storage.local.get("useLocalClaude")).useLocalClaude) return { error: "no_key" };
   const p = await loadProfile();
   const context = resumeContext(p);
   const body = {
@@ -307,7 +332,7 @@ function validateMappings(raw, fields, profile) {
 
 async function mapFields(fields, jd) {
   const anthropicKey = await getKey();
-  if (!anthropicKey) return { error: "no_key" };
+  if (!anthropicKey && !(await chrome.storage.local.get("useLocalClaude")).useLocalClaude) return { error: "no_key" };
   const p = await loadProfile();
   const bank = await mergedBank();
   const priors = Object.values(bank).slice(0, 80).map((e) => `- ${e.label}: ${e.value}`).join("\n");
