@@ -7,15 +7,15 @@ rather spend subscription usage than pay per token.
 ## Run it (persistent, like Wisdom)
 
 ```bash
-./bridge.sh start      # nohup-detached - survives closing the terminal
-./bridge.sh status     # is it running?
-./bridge.sh logs       # tail the log
-./bridge.sh stop
-./bridge.sh restart
+auto-apply start      # nohup-detached - survives closing the terminal
+auto-apply status     # is it running?
+auto-apply logs       # tail the log
+auto-apply stop
+auto-apply restart
 ```
 
 `start` detaches the server (reparented to launchd) so it keeps running after
-you close the terminal or Claude Code. Run `./bridge.sh start` again after a
+you close the terminal or Claude Code. Run `auto-apply start` again after a
 reboot. Then open the extension popup and tick **"Use local Claude"** - it shows
 a live "bridge running ✓" status.
 
@@ -31,7 +31,7 @@ No install, no dependencies (Python 3 stdlib only). Requires the `claude` CLI
 ### Auto-start on login (optional)
 
 To survive reboots without re-running `start`, add a LaunchAgent that runs
-`./bridge.sh start` at login - ask and one can be generated, or use macOS
+`auto-apply start` at login - ask and one can be generated, or use macOS
 "Login Items".
 
 ## How it works

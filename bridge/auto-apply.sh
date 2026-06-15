@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# AutoApply Claude bridge control.  Usage: ./bridge.sh {start|stop|restart|status|logs}
+# AutoApply Claude bridge control.  Usage: auto-apply {start|stop|restart|status|logs}
 # Mirrors the Wisdom pattern: nohup-detached so it survives closing the terminal
 # / Claude Code session. Manual start (run again after a reboot), like `wisdom`.
 SOURCE="${BASH_SOURCE[0]:-$0}"
@@ -7,8 +7,8 @@ while [ -L "$SOURCE" ]; do
   T="$(readlink "$SOURCE")"; case "$T" in /*) SOURCE="$T" ;; *) SOURCE="$(dirname "$SOURCE")/$T" ;; esac
 done
 DIR="$(cd "$(dirname "$SOURCE")" && pwd)"
-PIDFILE="$DIR/.bridge.pid"
-LOG="$DIR/bridge.log"
+PIDFILE="$DIR/.auto-apply.pid"
+LOG="$DIR/auto-apply.log"
 PORT=8765
 
 running() { [ -f "$PIDFILE" ] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; }
@@ -40,5 +40,5 @@ case "${1:-}" in
     elif lsof -ti tcp:"$PORT" >/dev/null 2>&1; then echo "running on :$PORT (pid $(lsof -ti tcp:"$PORT" | tr '\n' ' '), started outside this script)"
     else echo "not running"; fi ;;
   logs)    tail -f "$LOG" ;;
-  *)       echo "usage: ./bridge.sh {start|stop|restart|status|logs}"; exit 1 ;;
+  *)       echo "usage: auto-apply {start|stop|restart|status|logs}"; exit 1 ;;
 esac

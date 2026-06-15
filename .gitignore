@@ -16,5 +16,5 @@ docs/*.pdf
 secrets.js
 
 # bridge runtime
-bridge/.bridge.pid
-bridge/bridge.log
+bridge/.auto-apply.pid
+bridge/auto-apply.log
