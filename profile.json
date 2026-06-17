@@ -1,0 +1,249 @@
+{
+  "identity": {
+    "first_name": "Prabhav",
+    "last_name": "Nalhe",
+    "full_name": "Prabhav Nalhe",
+    "email": "nprabhav111@gmail.com",
+    "phone": "+1-631-710-5485",
+    "location_city": "San Jose",
+    "location_state": "CA",
+    "zip_code": "",
+    "country": "United States",
+    "pronouns": "He/Him"
+  },
+  "links": {
+    "linkedin": "https://linkedin.com/in/nprabhav",
+    "github": "https://github.com/nprabhav",
+    "portfolio": "https://prabhavnalhe.com",
+    "website": "https://prabhavnalhe.com"
+  },
+  "documents": {
+    "resume": "docs/resume.pdf",
+    "cover_letter": "docs/cover_letter.pdf"
+  },
+  "work_eligibility": {
+    "authorized_to_work_us": "Yes",
+    "require_sponsorship_now_or_future": "Yes",
+    "sponsorship_details": "Currently on H-1B status; will require H-1B sponsorship/transfer now and in the future",
+    "visa_status": "H-1B",
+    "citizenship": "India",
+    "us_citizen": "No",
+    "security_clearance": "None"
+  },
+  "logistics": {
+    "years_experience": "6",
+    "open_to_relocation": "Yes",
+    "remote_preference": "Open to onsite, hybrid, or remote",
+    "willing_to_work_onsite": "Yes",
+    "current_location": "San Jose, CA, United States",
+    "earliest_start_date": "Immediately",
+    "notice_period": "None - available immediately",
+    "salary_expectation": "Open to discussion; targeting market-competitive total compensation",
+    "willing_to_travel": "Yes"
+  },
+  "eeo_voluntary": {
+    "gender": "Male",
+    "race_ethnicity": "Asian",
+    "veteran_status": "I am not a protected veteran",
+    "disability_status": "No, I do not have a disability"
+  },
+  "education": [
+    {
+      "school": "Stony Brook University",
+      "degree": "Master of Science",
+      "field": "Computer Science",
+      "gpa": "3.92",
+      "start": "Aug 2021",
+      "end": "Dec 2022",
+      "location": "Stony Brook, NY",
+      "coursework": []
+    },
+    {
+      "school": "Pune Institute of Computer Technology",
+      "degree": "Bachelor of Engineering",
+      "field": "Computer Science",
+      "gpa": "",
+      "start": "Aug 2014",
+      "end": "May 2018",
+      "location": "Pune, India",
+      "coursework": []
+    }
+  ],
+  "experience": [
+    {
+      "company": "Meta Platforms, Inc.",
+      "title": "Software Engineer | Reliability Infra",
+      "location": "Menlo Park, CA",
+      "current": true,
+      "start": "Jan 2024",
+      "end": "",
+      "highlights": [
+        "Engineered the dependency platform's canonical source-of-truth Dependency Service in Rust - stream-fusion pipeline normalizing 6 heterogeneous telemetry sources (RPC traces, service-router logs, firewall flow telemetry resolving IP/DNS to service identity) into one unified graph at ~20 GB/s, exposed via realtime tailer subscriptions and bulk query APIs.",
+        "Shipped live tailers detecting newly-appeared dependencies fleet-wide and the notification system routing them to owning teams - surfaced 475K dependencies with no prior visibility, behind several major incident classes.",
+        "Designed a full-stack risky-dependency notification system (DB schema, Thrift/GraphQL APIs, React/Relay UI) on an LLM hard/soft dependency classifier with per-oncall subscriptions; drove adoption across 1,200+ services with full highest-criticality-tier coverage and set the team's H1 2026 AI roadmap.",
+        "Ran the Dependency Protection Program end-to-end, onboarding 70+ teams on an audit framework I authored for removing or softening unwanted dependencies; resolution rate doubled and time-to-resolve dropped from 24 days to 8.",
+        "Led a 3-engineer, two-team fault-injection program protecting ~$100M in annual revenue exposure by eliminating risky Tier-0/1 dependencies via Eris (700+ experiments/day, coverage 38% to 83%, contributed new dependency fault types); built the experiment harness whose outputs feed back as ground-truth labels, shipping the classifier at 98% accuracy.",
+        "Architected an LLM agent harness generating failure-impact analysis across 2.2M dependency pairs (16 purpose-built tools, tiered compute, inline LLM-as-judge quality gating, $0.15/analysis) at near-100% coverage, cutting investigation time from 30 minutes to 2; pattern adopted by 3 adjacent infra teams."
+      ]
+    },
+    {
+      "company": "Fidelity Investments",
+      "title": "Software Engineer",
+      "location": "Durham, NC",
+      "current": false,
+      "start": "Feb 2023",
+      "end": "Dec 2023",
+      "highlights": [
+        "Designed a 15M-document indexing and retrieval pipeline (AWS Lambda, SQS, Solr) for financial research.",
+        "Led a real-time reporting system on AWS using microservices and event-driven architecture, reducing analyst manual effort 70%."
+      ]
+    },
+    {
+      "company": "Meta Platforms, Inc.",
+      "title": "Software Engineering Intern",
+      "location": "Menlo Park, CA",
+      "current": false,
+      "start": "May 2022",
+      "end": "Aug 2022",
+      "highlights": [
+        "Optimized MySQL promotion logic for multi-region clusters, reducing false-positive failover alarms 95%."
+      ]
+    },
+    {
+      "company": "Quest Global",
+      "title": "Software Engineer",
+      "location": "Pune, India",
+      "current": false,
+      "start": "Jun 2018",
+      "end": "Jul 2021",
+      "highlights": [
+        "Developed automotive systems serving 10K+ users - real-time voice authentication (GMM-SVM) and OTA update infrastructure for ECUs.",
+        "Optimized compute 40% and improved build speeds 70%."
+      ]
+    }
+  ],
+  "projects_publications": [
+    {
+      "name": "Multi-Model Benchmarking & Inference Architecture",
+      "dates": "2025",
+      "summary": "Benchmarked three frontier models (Claude 4.6, OpenAI, Meta's in-house model) across 10 dimensions for dependency classification and explanation generation; shipped the winner behind a unified inference router with prompt caching (CachePoints + sliding-window breakpoints)."
+    },
+    {
+      "name": "Deep Learning Driven Natural Language Text to SQL Query Conversion",
+      "dates": "2022",
+      "summary": "Co-authored peer-reviewed paper on deep-learning-driven text-to-SQL conversion; 35 citations.",
+      "publication": "IEEE TASLP / arXiv 2208.04415"
+    }
+  ],
+  "skills": {
+    "languages": [
+      "Python",
+      "Rust",
+      "C/C++",
+      "Java",
+      "JavaScript",
+      "TypeScript",
+      "SQL",
+      "Hack/PHP"
+    ],
+    "frontend": [
+      "React",
+      "Relay",
+      "TypeScript",
+      "JavaScript"
+    ],
+    "backend_apis": [
+      "Thrift",
+      "gRPC",
+      "GraphQL",
+      "REST",
+      "FastAPI",
+      "Microservices",
+      "Event-driven architecture",
+      "API design"
+    ],
+    "data": [
+      "Kafka",
+      "Hive/Presto",
+      "High-throughput streaming",
+      "Data lake pipelines",
+      "Pandas/NumPy"
+    ],
+    "databases": [
+      "MySQL",
+      "PostgreSQL",
+      "Redis",
+      "Apache Solr",
+      "NoSQL",
+      "Distributed KV/graph stores"
+    ],
+    "cloud_devops": [
+      "AWS (Lambda, EC2, SQS, S3)",
+      "Docker",
+      "Kubernetes",
+      "CI/CD",
+      "Git",
+      "Linux",
+      "SLO/SLI & reliability",
+      "Fault injection & chaos engineering",
+      "Distributed systems"
+    ],
+    "ml_ai": [
+      "LLMs",
+      "Agent harnesses",
+      "Multi-agent architectures",
+      "LLM evals",
+      "RAG systems",
+      "Embeddings",
+      "Prompt caching",
+      "Inference routing",
+      "PyTorch",
+      "scikit-learn"
+    ],
+    "ai_assisted_dev": [
+      "Claude Code",
+      "Anthropic API",
+      "MCP",
+      "Agentic workflows",
+      "LLM-as-judge evaluation"
+    ]
+  },
+  "leadership": [
+    "Led a 3-engineer, two-team program eliminating 50 risky Tier-0/1 dependencies from Meta's Monetization org, protecting ~$100M in annual revenue exposure",
+    "Ran the Dependency Protection Program end-to-end, onboarding 70+ teams across the company on an audit framework I authored",
+    "Set the team's H1 2026 AI roadmap; agent-harness pattern adopted by 3 adjacent infra teams"
+  ],
+  "narrative": {
+    "one_line_summary": "Software engineer (6+ years) building high-throughput distributed systems, reliability infrastructure, and production LLM agent systems at hyperscale.",
+    "intro": "At Meta I designed a 5-system dependency-intelligence platform addressing ~15% of company-wide top-severity incidents: a Rust streaming service ingesting ~20 GB/s from 6 telemetry sources into the company's first canonical dependency graph; notification and audit systems adopted by 1,200+ services; an LLM agent harness explaining 2.2M dependency pairs at $0.15/analysis; a hard/soft dependency classifier shipped at 98% accuracy; and a fault-injection feedback loop (700+ experiments/day) that generates the classifier's ground-truth labels automatically.",
+    "systems_strength": "My core strength is high-throughput distributed systems: I built the Rust stream-fusion pipeline that normalizes 6 heterogeneous telemetry sources into one canonical dependency graph at ~20 GB/s, on infrastructure serving multi-trillion daily requests, and the full-stack systems (Thrift/GraphQL APIs, React/Relay UIs, notification routing) on top of it.",
+    "fintech_angle": "At Fidelity Investments I built a 15M-document indexing and retrieval pipeline (AWS Lambda, SQS, Solr) and a real-time event-driven reporting system for financial research, so I have shipped in a regulated, high-correctness fintech environment.",
+    "ai_agentic_angle": "I shipped a production LLM agent harness at Meta: an iterative agent loop orchestrating 16 purpose-built tools (build-graph queries, source fetches, diff attribution, distributed traces) with inline LLM-as-judge quality gating, achieving near-100% coverage of 2.2M dependency pairs at $0.15/analysis. Note for drafting: this is structured retrieval via tool calls (a tool-using agent), NOT a vector-embedding/semantic-search RAG pipeline - never describe it as classical RAG, reranking, or semantic search.",
+    "ownership_value": "I am looking for end-to-end ownership and a shorter path from build to production - I want to work on agentic AI and reliability infrastructure at the center of a company's product, owning systems from design through operation. Note for drafting: lead with this pull-driven story; do not mention the Meta layoff or any performance ratings in drafted answers.",
+    "why_company_template": "I'm drawn to {company} because {specific product or mission hook from the JD}. The problems described map directly onto systems I built at Meta - {most relevant system from intro} - and I want to bring that experience to a team where I can own critical systems end-to-end and ship to production fast."
+  },
+  "answer_bank": {
+    "Have you ever been employed by Stripe or a Stripe affiliate?": "No",
+    "Have you ever been employed by this company or one of its affiliates?": "No",
+    "What is the most recent school you attended?": "Stony Brook University",
+    "What is the most recent degree you obtained?": "Masters",
+    "Do you opt-in to receive WhatsApp messages from Stripe Recruiting?": "Yes",
+    "Do you opt-in to receive WhatsApp messages from Recruiting?": "Yes",
+    "Will you require Stripe to sponsor you for a US work permit now or in the future?": "Yes",
+    "Will you require sponsorship for a US work permit now or in the future?": "Yes",
+    "Do you now, or will you in the future, require employment visa sponsorship or support (e.g., H-1B, O-1, TN, etc.) to work lawfully in the country to which you are applying, including renewals and transfers?": "Yes",
+    "Who is your current or previous employer?": "Meta",
+    "What is your current or previous job title?": "Software Engineer",
+    "Location (City)": "San Jose, California, United States",
+    "Please select the country where you currently reside.": "United States",
+    "Which U.S. State or Canadian Province do you reside in?": "California",
+    "In which state do you reside?": "California",
+    "Are you currently authorized to work in the US?": "Yes",
+    "If this role offers the option to work from a remote location, do you plan to work remotely?": "Yes",
+    "How Did You Hear About Us?": "LinkedIn",
+    "Are you a previous employee of this company?": "No",
+    "Phone Device Type": "Mobile",
+    "Are you currently subject to any non-compete or non-solicitation agreement that would impact your ability to work here or prevent you from accepting a job offer?": "No",
+    "Are you subject to any agreement (non-compete, non-disclosure, intellectual property) with a current or former employer that could restrict your employment?": "No"
+  }
+}
