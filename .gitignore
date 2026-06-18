@@ -1,5 +1,4 @@
 # Personal data — do NOT commit
-profile.json
 
 # OS / editor
 .DS_Store
@@ -11,3 +10,10 @@ profile.json
 
 # Personal documents
 docs/*.pdf
+
+# Local secrets
+secrets.js
+
+# bridge runtime
+bridge/.auto-apply.pid
+bridge/auto-apply.log

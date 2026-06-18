@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AutoApply - Applications</title>
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  body { font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; background: #f8fafc; color: #0f172a; }
+  .topbar { background: #0f172a; color: #fff; padding: 16px 28px; display: flex; align-items: center; justify-content: space-between; }
+  .brand { font-weight: 650; font-size: 16px; display: flex; align-items: center; gap: 9px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: #34d399; }
+  .topbar .sub { color: #94a3b8; font-size: 12.5px; font-weight: 400; margin-left: 10px; }
+  .tbtn { background: rgba(255,255,255,.08); color: #cbd5e1; border: 0; border-radius: 8px; padding: 8px 14px; font-weight: 600; font-size: 12.5px; cursor: pointer; }
+  .tbtn:hover { background: rgba(255,255,255,.16); color: #fff; }
+  main { max-width: 1060px; margin: 26px auto; padding: 0 24px; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 22px; }
+  .card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px 18px; }
+  .card .n { font-size: 26px; font-weight: 700; letter-spacing: -.5px; }
+  .card .l { color: #64748b; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; margin-top: 2px; }
+  .card.accent .n { color: #4f46e5; }
+  .funnel { display: flex; align-items: center; gap: 0; background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 14px 18px; margin-bottom: 22px; }
+  .fstage { flex: 1; text-align: center; }
+  .fstage .fn { font-size: 20px; font-weight: 700; }
+  .fstage .fl { color: #64748b; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
+  .farrow { color: #cbd5e1; font-size: 18px; padding: 0 6px; }
+  .followup { display: inline-block; font-size: 10.5px; font-weight: 700; color: #b45309; background: #fffbeb; border: 1px solid #fde68a; border-radius: 6px; padding: 2px 7px; margin-left: 6px; white-space: nowrap; }
+  .toolbar { display: flex; gap: 10px; margin-bottom: 14px; align-items: center; }
+  .search { flex: 1; border: 1px solid #e2e8f0; border-radius: 9px; padding: 9px 13px; font-size: 13.5px; outline: none; background: #fff; }
+  .search:focus { border-color: #4f46e5; box-shadow: 0 0 0 3px #e0e7ff; }
+  select.filter { border: 1px solid #e2e8f0; border-radius: 9px; padding: 9px 10px; font-size: 13px; background: #fff; }
+  table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+  thead th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .5px; color: #64748b; background: #f8fafc; padding: 11px 14px; border-bottom: 1px solid #e5e7eb; }
+  tbody td { padding: 12px 14px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; font-size: 13.5px; }
+  tbody tr:hover { background: #fafbff; }
+  td a { color: #0f172a; text-decoration: none; font-weight: 600; }
+  td a:hover { color: #4f46e5; }
+  .role { color: #64748b; font-size: 12.5px; margin-top: 1px; max-width: 360px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ats { display: inline-block; font-size: 11px; font-weight: 650; background: #f1f5f9; color: #475569; border-radius: 6px; padding: 3px 8px; text-transform: capitalize; }
+  .stsel { border: 1px solid #e2e8f0; border-radius: 7px; padding: 5px 7px; font-size: 12.5px; font-weight: 600; background: #fff; }
+  .st-applied { color: #047857; } .st-filled { color: #b45309; } .st-interview { color: #4338ca; } .st-offer { color: #047857; } .st-rejected { color: #94a3b8; }
+  .del { border: 0; background: none; color: #cbd5e1; cursor: pointer; font-size: 15px; padding: 4px 6px; border-radius: 6px; }
+  .del:hover { color: #dc2626; background: #fef2f2; }
+  .empty { text-align: center; color: #94a3b8; padding: 48px 0; font-size: 14px; }
+  .meta { color: #94a3b8; font-size: 12px; white-space: nowrap; }
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <span class="brand"><span class="dot"></span>AutoApply<span class="sub">Applications dashboard - stored locally in your browser</span></span>
+    <span><button class="tbtn" id="exportLog" title="Run log for debugging fill issues">Export debug log</button> <button class="tbtn" id="export">Export CSV</button></span>
+  </div>
+  <main>
+    <div class="stats">
+      <div class="card"><div class="n" id="s-total">0</div><div class="l">Tracked</div></div>
+      <div class="card accent"><div class="n" id="s-applied">0</div><div class="l">Submitted</div></div>
+      <div class="card"><div class="n" id="s-week">0</div><div class="l">This week</div></div>
+      <div class="card"><div class="n" id="s-fields">0</div><div class="l">Fields autofilled</div></div>
+    </div>
+    <div class="funnel" id="funnel"></div>
+    <div class="toolbar">
+      <input class="search" id="q" placeholder="Search company, role, or platform…">
+      <select class="filter" id="statusFilter">
+        <option value="">All statuses</option>
+        <option value="filled">Filled</option>
+        <option value="applied">Applied</option>
+        <option value="interview">Interview</option>
+        <option value="offer">Offer</option>
+        <option value="rejected">Rejected</option>
+      </select>
+    </div>
+    <table>
+      <thead><tr><th>Date</th><th>Company / Role</th><th>Platform</th><th>Autofilled</th><th>Status</th><th></th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div class="empty" id="empty" style="display:none">Nothing tracked yet - run Autofill on an application and it will appear here.</div>
+  </main>
+  <script src="dashboard.js"></script>
+</body>
+</html>
